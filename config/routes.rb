@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'auth/login'
+  get 'auth/get_current_user'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :api do
@@ -8,6 +10,9 @@ Rails.application.routes.draw do
       resources :order_products
       resources :breweries
       resources :users
+
+      post '/signin', to: 'auth#signin'
+      get '/auto_signin', to: 'auth#auto_signin'
     end
   end
 end
