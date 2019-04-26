@@ -20,14 +20,23 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-  def signin 
-    @user = User.find_by(email: signin_params[:email])
-    if (@user && @user.password_digest === signin_params[:password])
+  def update
+    @user = User.find(params[:id])
+    if @user.update(first_name: update_params[:first_name], last_name: update_params[:last_name], tel: update_params[:tel], address_line_1: update_params[:address_line_1], address_line_2: update_params[:address_line_2], city: update_params[:city], postcode: update_params[:postcode])
       render json: @user
-    else
-      render json: {error: 'Incorrect Credentials', status: 400}
+    else 
+      render json: {error: @user.errors.full_messages, status: 400}
     end
   end
+
+  # def signin 
+  #   @user = User.find_by(email: signin_params[:email])
+  #   if (@user && @user.password_digest === signin_params[:password])
+  #     render json: @user
+  #   else
+  #     render json: {error: 'Incorrect Credentials', status: 400}
+  #   end
+  # end
 
   private
 
@@ -35,8 +44,12 @@ class Api::V1::UsersController < ApplicationController
     params.permit(:first_name, :last_name, :email, :password, :dob)
   end
 
-  def signin_params
-    params.permit(:email, :password)
+  def update_params
+    params.permit(:id, :first_name, :last_name, :tel, :address_line_1, :address_line_2, :city, :postcode, :user)
   end
+
+  # def signin_params
+  #   params.permit(:email, :password)
+  # end
 
 end
