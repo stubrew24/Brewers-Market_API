@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
       post '/signin', to: 'auth#signin'
       get '/auto_signin', to: 'auth#auto_signin'
+
+      post '/update_stock', to: 'products#update_stock'
     end
   end
 end
