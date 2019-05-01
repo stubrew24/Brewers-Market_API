@@ -31,7 +31,7 @@ class Api::V1::OrdersController < ApplicationController
     if @error
       render json: {error: @error, status: 400}
     else
-      render json: OrderSerializer.new(@order)
+      render json: {id: @order.id}
     end
   end
 
