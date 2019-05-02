@@ -2,7 +2,7 @@ class OrderSerializer < ActiveModel::Serializer
     attributes :id, :total, :delivery, :status, :created_at, :products, :user
     def products
         self.object.products.map do |product|
-            qty = self.object.order_products.find_by(product_id: product.id).qty
+            qty = product.order_products.find_by(order_id: self.object.id).qty
             {
                 id: product.id,
                 name: product.name,

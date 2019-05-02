@@ -9,25 +9,20 @@ class Api::V1::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     render json: @product
   end
+  
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(update_params)
+      render json: @product
+    else 
+      render json: {error: 'An error occurred. Please try again or contact the site administrator.'}
+    end
+  end
 
-  # def update_stock
-  #   @items = params['cart']
+  private
 
-  #   @items.each do |item| 
-  #     product = Product.find(item[0].to_i)
-  #     if product.stock < item[1] 
-  #       @error = 'An error occured. Not enough stock available.'
-  #     elsif !product.update(stock: product.stock - item[1])
-  #       @error = 'An error occured, please try again or contact site administrator.'
-  #     end
-  #   end
-
-  #   if @error
-  #     render json: {error: @error, status: 400}
-  #   else
-  #     render json: {success: 'Success'}
-  #   end
-
-  # end
+  def update_params
+    params.permit(:id, :name, :description, :abv, :volume, :style, :packaging, :price, :stock, :image_url)
+  end
 
 end
