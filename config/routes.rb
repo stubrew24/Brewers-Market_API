@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :order_products
       resources :breweries
       resources :users
+      resources :reviews
 
       post '/signin', to: 'auth#signin'
       get '/auto_signin', to: 'auth#auto_signin'
