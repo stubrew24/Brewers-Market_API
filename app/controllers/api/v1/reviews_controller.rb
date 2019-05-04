@@ -5,7 +5,11 @@ class Api::V1::ReviewsController < ApplicationController
         if @review.save
             render json: @review
         else 
-            render json: {error: 'An error occurred. Please try again or contact site administrator.'}
+            if @review.errors.full_messages.include?("User has already been taken")
+                render json: {error: 'You have already reviewed this product. (Users may only review a product once.)'}
+            else
+                render json: {error: 'An error occurred. Please try again or contact site administrator.'}
+            end
         end
     end
 
