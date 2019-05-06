@@ -22,7 +22,7 @@ class Api::V1::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(first_name: update_params[:first_name], last_name: update_params[:last_name], tel: update_params[:tel], address_line_1: update_params[:address_line_1], address_line_2: update_params[:address_line_2], city: update_params[:city], postcode: update_params[:postcode])
+    if @user.update(first_name: update_params[:first_name], last_name: update_params[:last_name], tel: update_params[:tel], address_line_1: update_params[:address_line_1], address_line_2: update_params[:address_line_2], city: update_params[:city], postcode: update_params[:postcode], profile_img: update_params[:profile_img])
       render json: @user
     else 
       render json: {error: @user.errors.full_messages, status: 400}
@@ -45,7 +45,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update_params
-    params.permit(:id, :first_name, :last_name, :tel, :address_line_1, :address_line_2, :city, :postcode, :user)
+    params.permit(:id, :first_name, :last_name, :tel, :address_line_1, :address_line_2, :city, :postcode, :user, :profile_img)
   end
 
   # def signin_params

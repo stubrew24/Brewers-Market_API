@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    belongs_to :brewery
+    belongs_to :brewery, optional: true
     has_many :orders
     has_many :reviews
     has_many :order_products, through: :orders

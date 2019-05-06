@@ -22,7 +22,7 @@ class Api::V1::BreweriesController < ApplicationController
   private 
 
   def brewery_params
-    params.permit(:id, :name, :bio, :location)
+    params.permit(:id, :name, :bio, :location, :profile_img)
   end
   
 end

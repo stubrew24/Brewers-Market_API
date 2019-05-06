@@ -34,6 +34,10 @@ gem 'jwt'
 
 gem 'dynopoker'
 
+# gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem 'stripe'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

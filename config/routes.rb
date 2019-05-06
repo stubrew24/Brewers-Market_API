@@ -11,9 +11,15 @@ Rails.application.routes.draw do
       resources :breweries
       resources :users
       resources :reviews
+      resources :posts
+      resources :likes
+      resources :user_breweries
+      resources :charges, only: [:new, :create]
 
       post '/signin', to: 'auth#signin'
       get '/auto_signin', to: 'auth#auto_signin'
+
+      get '/ordernum', to: 'orders#order_num'
 
       post '/update_stock', to: 'products#update_stock'
     end

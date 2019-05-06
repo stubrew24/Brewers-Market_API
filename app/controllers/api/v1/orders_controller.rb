@@ -35,13 +35,9 @@ class Api::V1::OrdersController < ApplicationController
     end
   end
 
-
-  # t.string "order_date"
-  # t.float "total"
-  # t.float "discount"
-  # t.float "delivery"
-  # t.string "status"
-  # t.integer "brewery_id"
-  # t.integer "user_id"
+  def order_num
+    @next = Order.last.id + 1
+    render json: {order: @next}
+  end
 
 end

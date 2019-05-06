@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_201824) do
+ActiveRecord::Schema.define(version: 2019_05_05_123542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2019_05_04_201824) do
     t.string "profile_img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.integer "post_id"
+    t.integer "user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "user_id"
+    t.boolean "liked", default: true
   end
 
   create_table "order_products", force: :cascade do |t|
@@ -38,6 +50,20 @@ ActiveRecord::Schema.define(version: 2019_05_04_201824) do
     t.string "status"
     t.integer "brewery_id"
     t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_images", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "image_url"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.string "content"
+    t.integer "product_link"
+    t.integer "brewery_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
