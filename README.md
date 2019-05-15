@@ -1,24 +1,18 @@
-# README
+# Brewers Market API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A market place for buying/selling small batch beers. Breweries can list products, manage orders and share updates. Users can buy and review beers, and follow breweries.
 
-Things you may want to cover:
+![alt text](https://res.cloudinary.com/dm7moiolo/image/upload/v1557938055/Screenshot_2019-05-15_at_17.29.02.png)
 
-* Ruby version
+## Built With
 
-* System dependencies
+* [React](https://reactjs.org/) - Frontend Framwork
+* [Rails](https://rubyonrails.org/) -  Backend API
 
-* Configuration
+## Author
 
-* Database creation
+* **Stuart Sewell** - *Initial work* - https://github.com/stubrew24
 
-* Database initialization
+## License
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
